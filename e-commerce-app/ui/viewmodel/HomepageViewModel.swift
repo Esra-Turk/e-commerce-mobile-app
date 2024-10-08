@@ -6,7 +6,19 @@
 //
 
 import Foundation
+import RxSwift
 
 class HomepageViewModel {
+    var pRepo = ProductRepository()
+    var productsList = BehaviorSubject<[Urunler]>(value: [Urunler]())
+    
+    init() {
+        pRepo.getProducts()
+        productsList = pRepo.productsList
+    }
+    
+    func getProducts(){
+        pRepo.getProducts()
+    }
     
 }
