@@ -17,6 +17,7 @@ class Homepage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionViewLayout()
+        self.tabBarController?.tabBar.tintColor = UIColor(named: "button-orange")
 
         _ = viewModel.productsList.subscribe(
             onNext: { list in
