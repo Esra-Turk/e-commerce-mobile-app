@@ -13,7 +13,7 @@ class HomepageViewModel {
     var productsList = BehaviorSubject<[Urunler]>(value: [Urunler]())
     
     init() {
-        pRepo.getProducts()
+        getProducts()
         productsList = pRepo.productsList
     }
     

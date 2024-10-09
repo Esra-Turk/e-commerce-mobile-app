@@ -26,7 +26,7 @@ class ProductRepository {
                 print(error.localizedDescription)
             }
             
-        }
+        }.resume()
     }
     
 }

@@ -17,7 +17,7 @@ struct API {
         static let removeFromCart = baseURL + "/sepettenUrunSil.php"
         
         static func fetchProductImage(for imageName: String) -> String {
-            return "\(baseURL)/resimler/\(imageName).png"
+            return "\(baseURL)/resimler/\(imageName)"
         }
     }
 }
