@@ -17,8 +17,9 @@ class Homepage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionViewLayout()
+        setupNavigationController()
         self.tabBarController?.tabBar.tintColor = UIColor(named: "button-orange")
-
+        
         _ = viewModel.productsList.subscribe(
             onNext: { list in
                 self.productList = list
@@ -35,6 +36,15 @@ class Homepage: UIViewController {
         viewModel.getProducts()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail" {
+            if let product = sender as? Urunler {
+                let destinationVC = segue.destination as! ProductDetail
+                destinationVC.product = product
+            }
+        }
+    }
+    
     private func setupCollectionViewLayout() {
           let cellDesign = UICollectionViewFlowLayout()
           cellDesign.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
@@ -47,6 +57,14 @@ class Homepage: UIViewController {
           let itemWidth = (screenWidth - totalPadding - 5) / 2
           cellDesign.itemSize = CGSize(width: itemWidth, height: itemWidth * 1.5)
       }
+    
+    private func setupNavigationController(){
+        let backButton = UIBarButtonItem()
+        backButton.title = "Geri"
+        backButton.tintColor = UIColor.black
+        navigationItem.backBarButtonItem = backButton
+
+    }
     
 }
 
@@ -67,6 +85,12 @@ extension Homepage: UICollectionViewDelegateFlowLayout, UICollectionViewDataSour
         cell.layer.masksToBounds = true
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let product = productList[indexPath.row]
+        performSegue(withIdentifier: "toDetail", sender: product)
+        collectionView.deselectItem(at: indexPath, animated: false)
     }
 
 }

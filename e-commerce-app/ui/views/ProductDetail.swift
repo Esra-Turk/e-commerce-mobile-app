@@ -8,22 +8,30 @@
 import UIKit
 
 class ProductDetail: UIViewController {
-
+    
+    @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var productPriceLabel: UILabel!
+    @IBOutlet weak var productBrandLabel: UILabel!
+    @IBOutlet weak var reviewsLabel: UILabel!
+    
+    var product: Urunler?
+    var viewModel = ProductDetailViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if let pr = product {
+            ImageHelper.showImage(for: productImageView, urlString: pr.resim)
+            productNameLabel.text = pr.ad
+            productBrandLabel.text = pr.marka
+            productPriceLabel.text = "\(pr.fiyat!) ₺"
+        }
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func addToCartButton(_ sender: Any) {
     }
-    */
-
+    
 }
