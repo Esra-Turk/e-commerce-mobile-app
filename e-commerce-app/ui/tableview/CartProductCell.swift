@@ -9,6 +9,14 @@ import UIKit
 
 class CartProductCell: UITableViewCell {
 
+    @IBOutlet weak var customView: UIView!
+    @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var productPriceLabel: UILabel!
+    @IBOutlet weak var productBrandLabel: UILabel!
+    @IBOutlet weak var productQuantityLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +27,16 @@ class CartProductCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    
+    @IBAction func increaseQuantityButton(_ sender: UIButton) {
+    }
+    
+    @IBAction func decreaseQuantityButton(_ sender: UIButton) {
+    }
+    
+    @IBAction func removeProductButton(_ sender: Any) {
+    }
+    
+    
 }
