@@ -14,8 +14,12 @@ class Cart: UIViewController {
     @IBOutlet weak var discountLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
     
+    var viewModel = CartViewModel()
+    var cartItemList = [UrunlerSepeti]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.getCartItems()
 
         // Do any additional setup after loading the view.
     }

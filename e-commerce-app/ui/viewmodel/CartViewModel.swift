@@ -8,5 +8,10 @@
 import Foundation
 
 class CartViewModel {
+    var cRepo = CartRepository()
+    
+    func getCartItems(){
+        cRepo.getCartItems()
+    }
     
 }
