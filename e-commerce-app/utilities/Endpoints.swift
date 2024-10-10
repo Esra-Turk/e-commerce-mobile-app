@@ -20,4 +20,8 @@ struct API {
             return "\(baseURL)/resimler/\(imageName)"
         }
     }
+    
+    struct User {
+        static let userName = "esraturk"
+    }
 }

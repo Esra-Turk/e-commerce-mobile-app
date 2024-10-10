@@ -32,6 +32,13 @@ class ProductDetail: UIViewController {
     
 
     @IBAction func addToCartButton(_ sender: Any) {
+        guard let product = product else { return }
+            
+        viewModel.addToCart(name: product.ad!,
+                            photo: product.resim!,
+                            category: product.kategori!,
+                            price: product.fiyat!,
+                            brand: product.marka!,
+                            orderQuantity: 1)
     }
-    
 }
