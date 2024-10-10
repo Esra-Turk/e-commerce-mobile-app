@@ -20,6 +20,7 @@ class Cart: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.getCartItems()
+        //viewModel.remevoCartItem(cartID: 588)
 
         // Do any additional setup after loading the view.
     }

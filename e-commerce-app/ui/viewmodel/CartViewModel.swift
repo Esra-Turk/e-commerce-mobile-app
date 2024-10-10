@@ -14,4 +14,8 @@ class CartViewModel {
         cRepo.getCartItems()
     }
     
+    func remevoCartItem(cartID:Int){
+        cRepo.removeCartItem(cartID: cartID)
+    }
+    
 }

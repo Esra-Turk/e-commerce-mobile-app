@@ -47,8 +47,7 @@ class CartRepository {
                 let res = try JSONDecoder().decode(SepetResult.self, from: data!)
                 if let list = res.urunler_sepeti {
                     self.cartItemList.onNext(list)
-                    print(list[0].sepetId!) //id 520
-                    print(list[1].sepetId!) // id 521
+                    print(list.first!.sepetId!)
                 }
             }
             catch {
@@ -56,6 +55,28 @@ class CartRepository {
             }
             
         }.resume()
+    }
+    
+    func removeCartItem(cartID:Int){
+        let removeCartItemURL = API.Endpoints.removeFromCart
+        let username = API.User.userName
+        
+        var request = URLRequest(url: URL(string: removeCartItemURL)!)
+        request.httpMethod = "POST"
+        let postString = "sepetId=\(cartID)&kullaniciAdi=\(username)"
+        request.httpBody = postString.data(using: .utf8)
+        
+        URLSession.shared.dataTask(with: request) { data,response,error in
+            do {
+                let res = try JSONDecoder().decode(CRUDResult.self, from: data!)
+                print("success : \(res.success!)")
+                print("message : \(res.message!)")
+            } catch{
+                print(error.localizedDescription)
+            }
+            
+        }.resume()
+        
     }
     
 }
