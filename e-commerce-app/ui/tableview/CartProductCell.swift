@@ -35,7 +35,11 @@ class CartProductCell: UITableViewCell {
     @IBAction func decreaseQuantityButton(_ sender: UIButton) {
     }
     
+    var onRemoveButtonTapped: (() -> Void)?
+    
     @IBAction func removeProductButton(_ sender: Any) {
+        onRemoveButtonTapped?()
+        
     }
     
     

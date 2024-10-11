@@ -34,7 +34,6 @@ class Cart: UIViewController {
                 self.productsTableView.reloadData()
             }
         })
-      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +64,9 @@ extension Cart:UITableViewDelegate,UITableViewDataSource {
         cell.customView.layer.shadowRadius = 3
         cell.customView.layer.masksToBounds = false
         
+        cell.onRemoveButtonTapped = { [weak self] in
+            self?.viewModel.remevoCartItem(cartID: product.sepetId!)
+        }
         return cell
     }
     
