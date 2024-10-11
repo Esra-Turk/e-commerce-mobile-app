@@ -10,6 +10,7 @@ import RxSwift
 
 class CartRepository {
     var cartItemList = BehaviorSubject<[UrunlerSepeti]>(value: [UrunlerSepeti]())
+    var cartDictionary: [Int:String] = [:]
     
     func addToCart(name:String, photo:String, category:String, price:Int, brand:String, orderQuantity:Int){
         let addToCartURL = API.Endpoints.addToCart
@@ -47,7 +48,13 @@ class CartRepository {
                 let res = try JSONDecoder().decode(SepetResult.self, from: data!)
                 if let list = res.urunler_sepeti {
                     self.cartItemList.onNext(list)
-                    print(list.first!.sepetId!)
+                   
+                    for item in list {
+                        if let productName = item.ad, let cartId = item.sepetId {
+                            self.cartDictionary[cartId] = productName
+                        }
+                    }
+                    print("Sepet: \(self.cartDictionary)")
                 }
             }
             catch {

@@ -6,9 +6,16 @@
 //
 
 import Foundation
+import RxSwift
 
 class CartViewModel {
     var cRepo = CartRepository()
+    var cartItemList = BehaviorSubject<[UrunlerSepeti]>(value: [UrunlerSepeti]())
+    
+    init() {
+        getCartItems()
+        cartItemList = cRepo.cartItemList
+    }
     
     func getCartItems(){
         cRepo.getCartItems()
