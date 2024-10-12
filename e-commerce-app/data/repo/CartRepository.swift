@@ -84,6 +84,13 @@ class CartRepository {
             
         }.resume()
         
+        var currentList = try! cartItemList.value()
+        if let index = currentList.firstIndex(where: { $0.sepetId == cartID }) {
+            currentList.remove(at: index)
+        }
+
+        cartItemList.onNext(currentList)
+        
     }
     
 }
