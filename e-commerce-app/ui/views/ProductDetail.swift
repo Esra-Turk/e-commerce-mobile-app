@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class ProductDetail: UIViewController {
     
@@ -14,9 +15,12 @@ class ProductDetail: UIViewController {
     @IBOutlet weak var productPriceLabel: UILabel!
     @IBOutlet weak var productBrandLabel: UILabel!
     @IBOutlet weak var reviewsLabel: UILabel!
+    @IBOutlet weak var productQuantityLabel: UILabel!
+    @IBOutlet weak var stepper: UIStepper!
     
     var product: Urunler?
     var viewModel = ProductDetailViewModel()
+    var cartItemList = [UrunlerSepeti]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +34,39 @@ class ProductDetail: UIViewController {
         
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        observeCartItems()
+        self.stepper.value = 1.0
+    }
+    
+    @IBAction func stepper(_ sender: UIStepper) {
+        productQuantityLabel.text = "\(Int(stepper.value))"
+    }
+    
     @IBAction func addToCartButton(_ sender: Any) {
         guard let product = product else { return }
             
-        viewModel.addToCart(name: product.ad!,
+        viewModel.updateOrAddCartItem(name: product.ad!,
                             photo: product.resim!,
                             category: product.kategori!,
                             price: product.fiyat!,
                             brand: product.marka!,
-                            orderQuantity: 1)
+                            orderQuantity: Int(stepper.value))
+        
     }
+    
+    func observeCartItems() {
+        _ = viewModel.cartItemList
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] list in
+                self?.cartItemList = list
+                DispatchQueue.main.async {
+                    self?.productQuantityLabel.text = "1"
+                    
+                }
+            })
+            .disposed(by: viewModel.disposeBag)
+    }
+
 }

@@ -48,13 +48,6 @@ class CartRepository {
                 let res = try JSONDecoder().decode(SepetResult.self, from: data!)
                 if let list = res.urunler_sepeti {
                     self.cartItemList.onNext(list)
-                   
-                    for item in list {
-                        if let productName = item.ad, let cartId = item.sepetId {
-                            self.cartDictionary[cartId] = productName
-                        }
-                    }
-                    print("Sepet: \(self.cartDictionary)")
                 }
             }
             catch {
@@ -93,4 +86,27 @@ class CartRepository {
         
     }
     
+    func updateOrAddCartItem(name: String, photo: String, category: String, price: Int, brand: String, orderQuantity: Int) {
+        do {
+            let currentCartItems = try cartItemList.value()
+            let username = API.User.userName
+            
+            if let existingItem = currentCartItems.first(where: { $0.ad == name && $0.kullaniciAdi == username }) {
+                let updatedOrderQuantity = (existingItem.siparisAdeti ?? 0) + orderQuantity
+                
+                if let cartId = existingItem.sepetId {
+                    removeCartItem(cartID: cartId)
+                }
+                
+                addToCart(name: name, photo: photo, category: category, price: price, brand: brand, orderQuantity: updatedOrderQuantity)
+                
+            } else {
+                   addToCart(name: name, photo: photo, category: category, price: price, brand: brand, orderQuantity: orderQuantity)
+               }
+           } catch {
+               print("Error retrieving cart items: \(error.localizedDescription)")
+               return
+           }
+        
+    }
 }

@@ -25,8 +25,10 @@ class Cart: UIViewController {
         productsTableView.delegate = self
         productsTableView.dataSource = self
         
-        //viewModel.remevoCartItem(cartID: 732)
-        //viewModel.remevoCartItem(cartID: 731)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.getCartItems()
         
         _ = viewModel.cartItemList.subscribe(onNext: {list in
             self.cartItemList = list
@@ -34,10 +36,6 @@ class Cart: UIViewController {
                 self.productsTableView.reloadData()
             }
         })
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        viewModel.getCartItems()
     }
 
 }

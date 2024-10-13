@@ -6,12 +6,24 @@
 //
 
 import Foundation
+import RxSwift
 
 class ProductDetailViewModel {
+    var cartItemList = BehaviorSubject<[UrunlerSepeti]>(value: [UrunlerSepeti]())
     var cRepo = CartRepository()
+    var disposeBag = DisposeBag()
+
+    init() {
+        cRepo.getCartItems()
+        cartItemList = cRepo.cartItemList
+    }
+
     
-    func addToCart(name:String, photo:String, category:String, price:Int, brand:String, orderQuantity:Int){
-        cRepo.addToCart(name: name, photo: photo, category: category, price: price, brand: brand, orderQuantity: orderQuantity)
+    func updateOrAddCartItem(name:String, photo:String, category:String, price:Int, brand:String, orderQuantity:Int){
+        cRepo.updateOrAddCartItem(name: name, photo: photo, category: category, price: price, brand: brand, orderQuantity: orderQuantity)
+        
+        cRepo.getCartItems()
+        cartItemList = cRepo.cartItemList
     }
     
 }

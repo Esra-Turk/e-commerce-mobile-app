@@ -13,7 +13,6 @@ class CartViewModel {
     var cartItemList = BehaviorSubject<[UrunlerSepeti]>(value: [UrunlerSepeti]())
     
     init() {
-        getCartItems()
         cartItemList = cRepo.cartItemList
     }
     
