@@ -617,6 +617,7 @@
                                             <outlet property="productNameLabel" destination="j8c-NF-E9s" id="UEk-UM-6uB"/>
                                             <outlet property="productPriceLabel" destination="lwY-kr-IBU" id="z2S-A5-zXq"/>
                                             <outlet property="productQuantityLabel" destination="FuT-8N-ljp" id="BGc-da-pkZ"/>
+                                            <outlet property="removeProductButton" destination="5UF-Y2-8qe" id="0rR-uJ-CMO"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
