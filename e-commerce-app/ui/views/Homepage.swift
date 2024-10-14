@@ -13,12 +13,16 @@ class Homepage: UIViewController {
     
     var viewModel = HomepageViewModel()
     var productList = [Urunler]()
+    var reviewCounts: [Int] = []
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionViewLayout()
         setupNavigationController()
         self.tabBarController?.tabBar.tintColor = UIColor(named: "button-orange")
+        
+        reviewCounts = (0..<12).map { _ in Int.random(in: 50...200) }
         
         _ = viewModel.productsList.subscribe(
             onNext: { list in
@@ -41,13 +45,17 @@ class Homepage: UIViewController {
             if let product = sender as? Urunler {
                 let destinationVC = segue.destination as! ProductDetail
                 destinationVC.product = product
+                
+                if let index = productList.firstIndex(where: { $0 === product }) {
+                    destinationVC.reviewCount = reviewCounts[index]
+                }
             }
         }
     }
     
     private func setupCollectionViewLayout() {
           let cellDesign = UICollectionViewFlowLayout()
-          cellDesign.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+          cellDesign.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 50, right: 20)
           cellDesign.minimumInteritemSpacing = 5
           cellDesign.minimumLineSpacing = 15
           collectionViewProduct.collectionViewLayout = cellDesign
@@ -80,7 +88,7 @@ extension Homepage: UICollectionViewDelegateFlowLayout, UICollectionViewDataSour
         ImageHelper.showImage(for: cell.productImageView, urlString: product.resim)
         cell.productNameLabel.text = product.ad
         cell.priceLabel.text = "\(product.fiyat!) ₺"
-        cell.productReviewsLabel.text  = "\(Int.random(in: 50...200)) değerlendirme"
+        cell.productReviewsLabel.text = "\(reviewCounts[indexPath.row]) Değerlendirme"
         cell.layer.cornerRadius = 20
         cell.layer.masksToBounds = true
         

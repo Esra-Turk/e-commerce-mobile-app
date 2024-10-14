@@ -16,11 +16,17 @@ class ProductDetail: UIViewController {
     @IBOutlet weak var productBrandLabel: UILabel!
     @IBOutlet weak var reviewsLabel: UILabel!
     @IBOutlet weak var productQuantityLabel: UILabel!
-    @IBOutlet weak var stepper: UIStepper!
     
     var product: Urunler?
     var viewModel = ProductDetailViewModel()
     var cartItemList = [UrunlerSepeti]()
+    var reviewCount: Int?
+    
+    var quantity = 1 {
+         didSet {
+             productQuantityLabel.text = "\(quantity)"
+         }
+     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +36,7 @@ class ProductDetail: UIViewController {
             productNameLabel.text = pr.ad
             productBrandLabel.text = pr.marka
             productPriceLabel.text = "\(pr.fiyat!) ₺"
+            reviewsLabel.text = "\(reviewCount ?? 0)"
         }
         
     }
@@ -37,11 +44,16 @@ class ProductDetail: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         observeCartItems()
-        self.stepper.value = 1.0
     }
     
-    @IBAction func stepper(_ sender: UIStepper) {
-        productQuantityLabel.text = "\(Int(stepper.value))"
+    @IBAction func decreaseQuantityLabel(_ sender: UIButton) {
+        if quantity > 1 {
+            quantity -= 1
+        }
+    }
+    
+    @IBAction func increaseQuantityLabel(_ sender: UIButton) {
+        quantity += 1
     }
     
     @IBAction func addToCartButton(_ sender: Any) {
@@ -52,7 +64,7 @@ class ProductDetail: UIViewController {
                             category: product.kategori!,
                             price: product.fiyat!,
                             brand: product.marka!,
-                            orderQuantity: Int(stepper.value))
+                            orderQuantity: quantity)
         
     }
     
