@@ -10,6 +10,12 @@ import UIKit
 class Homepage: UIViewController {
     
     @IBOutlet weak var collectionViewProduct: UICollectionView!
+    @IBOutlet weak var allButton: UIButton!
+    @IBOutlet weak var technologyButton: UIButton!
+    @IBOutlet weak var accessoryButton: UIButton!
+    @IBOutlet weak var cosmeticButton: UIButton!
+    @IBOutlet weak var sortButton: UIButton!
+    @IBOutlet weak var categoryNameLabel: UILabel!
     
     var viewModel = HomepageViewModel()
     var productList = [Urunler]()
@@ -21,6 +27,9 @@ class Homepage: UIViewController {
         setupCollectionViewLayout()
         setupNavigationController()
         self.tabBarController?.tabBar.tintColor = UIColor(named: "button-orange")
+        
+        selectButton(allButton)
+        setButtonStyle(button: sortButton)
         
         reviewCounts = (0..<12).map { _ in Int.random(in: 50...200) }
         
@@ -39,6 +48,97 @@ class Homepage: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         viewModel.getProducts()
     }
+    
+    
+    @IBAction func sortButtonTapped(_ sender: UIButton) {
+        showSortActionSheet(on: self)
+    }
+    
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        resetButtons()
+        selectButton(sender)
+        
+        switch sender {
+        case allButton:
+            viewModel.filterProducts(by: "All")
+            categoryNameLabel.text = "Tüm Ürünler"
+        case technologyButton:
+            viewModel.filterProducts(by: "Teknoloji")
+            categoryNameLabel.text = "Teknoloji"
+        case accessoryButton:
+            viewModel.filterProducts(by: "Aksesuar")
+            categoryNameLabel.text = "Aksesuar"
+        case cosmeticButton:
+            viewModel.filterProducts(by: "Kozmetik")
+            categoryNameLabel.text = "Kozmetik"
+        default:
+            break
+        }
+    }
+    
+    private func selectButton(_ button: UIButton) {
+        button.backgroundColor = UIColor(named: "button-orange")
+        button.setTitleColor(UIColor.white, for: .selected)
+        button.isSelected = true
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+    }
+    
+    private func resetButtons() {
+         let buttons = [allButton,technologyButton,accessoryButton,cosmeticButton]
+         for button in buttons {
+             button?.backgroundColor = UIColor.systemGray5
+             button?.setTitleColor(UIColor(named: "title-color"), for: .normal)
+             button?.isSelected = false
+             button?.layer.cornerRadius = 8
+             button?.layer.masksToBounds = true
+         }
+     }
+    
+    private func setButtonStyle(button:UIButton) {
+        button.layer.borderWidth = 0.7
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
+    }
+    
+    private func showSortActionSheet(on viewController: UIViewController) {
+        let actionSheet = UIAlertController(title: "Sırala", message: nil, preferredStyle: .actionSheet)
+
+        let lowestPriceAction = UIAlertAction(title: "En düşük fiyat", style: .default) { [self] _ in
+            self.productList = productList.sorted(by: {$0.fiyat! < $1.fiyat!})
+            
+            DispatchQueue.main.async {
+                self.collectionViewProduct.reloadData()
+            }
+            
+        }
+        
+        let highestPriceAction = UIAlertAction(title: "En yüksek fiyat", style: .default) { [self] _ in
+            self.productList = productList.sorted(by: {$0.fiyat! > $1.fiyat!})
+            
+            DispatchQueue.main.async {
+                self.collectionViewProduct.reloadData()
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "İptal", style: .cancel, handler: nil)
+        
+        lowestPriceAction.setValue(UIColor(named: "button-orange"), forKey: "titleTextColor")
+        highestPriceAction.setValue(UIColor(named: "button-orange"), forKey: "titleTextColor")
+        cancelAction.setValue(UIColor.black, forKey: "titleTextColor")
+
+        actionSheet.addAction(lowestPriceAction)
+        actionSheet.addAction(highestPriceAction)
+        actionSheet.addAction(cancelAction)
+
+        if let subview = actionSheet.view.subviews.first?.subviews.first?.subviews.first {
+            subview.backgroundColor = UIColor.white
+        }
+
+        viewController.present(actionSheet, animated: true, completion: nil)
+    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetail" {

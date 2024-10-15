@@ -11,14 +11,26 @@ import RxSwift
 class HomepageViewModel {
     var pRepo = ProductRepository()
     var productsList = BehaviorSubject<[Urunler]>(value: [Urunler]())
+    private var allProducts = [Urunler]()
+    private let disposeBag = DisposeBag()
     
     init() {
-        getProducts()
-        productsList = pRepo.productsList
+        pRepo.productsList.subscribe(onNext: { products in
+            self.allProducts = products
+            self.productsList.onNext(products)
+        }).disposed(by: disposeBag)
     }
     
     func getProducts(){
         pRepo.getProducts()
     }
     
+    func filterProducts(by category: String) {
+        if category == "All" {
+            productsList.onNext(allProducts)
+        } else {
+            let filteredProducts = allProducts.filter { $0.kategori == category }
+            productsList.onNext(filteredProducts)
+        }
+    }
 }

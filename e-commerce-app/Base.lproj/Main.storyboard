@@ -42,10 +42,11 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ye-RU-nJf">
                                                         <rect key="frame" x="0.0" y="0.0" width="80.666666666666671" height="29.666666666666668"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="gray" title="Hepsi">
                                                             <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
-                                                            <color key="baseForegroundColor" name="title-color"/>
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
                                                         </buttonConfiguration>
                                                         <userDefinedRuntimeAttributes>
@@ -53,13 +54,16 @@
                                                                 <integer key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NR3-rL-cdx"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkp-pZ-KFY">
                                                         <rect key="frame" x="92.666666666666686" y="0.0" width="80.333333333333314" height="29.666666666666668"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="gray" title="Teknoloji">
                                                             <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
-                                                            <color key="baseForegroundColor" name="title-color"/>
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
                                                         </buttonConfiguration>
                                                         <userDefinedRuntimeAttributes>
@@ -67,13 +71,16 @@
                                                                 <integer key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ceo-iG-nm8"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAN-17-U3t">
                                                         <rect key="frame" x="185" y="0.0" width="80.666666666666686" height="29.666666666666668"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="gray" title="Aksesuar">
                                                             <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
-                                                            <color key="baseForegroundColor" name="title-color"/>
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
                                                         </buttonConfiguration>
                                                         <userDefinedRuntimeAttributes>
@@ -81,13 +88,16 @@
                                                                 <integer key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uE0-t1-lQo"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ShX-lY-LLg">
                                                         <rect key="frame" x="277.66666666666669" y="0.0" width="80.333333333333314" height="29.666666666666668"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="gray" title="Kozmetik">
                                                             <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
-                                                            <color key="baseForegroundColor" name="title-color"/>
+                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
                                                         </buttonConfiguration>
                                                         <userDefinedRuntimeAttributes>
@@ -95,11 +105,14 @@
                                                                 <integer key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1w9-Nm-oqz"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Tüm Ürünler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbY-gc-crg">
-                                                <rect key="frame" x="20.000000000000007" y="204" width="93.666666666666686" height="20.333333333333343"/>
+                                                <rect key="frame" x="20.000000000000007" y="214" width="93.666666666666686" height="20.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -204,9 +217,33 @@
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="UAw-je-DvV"/>
                                                 </connections>
                                             </collectionView>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPR-cO-5bI">
+                                                <rect key="frame" x="292" y="209" width="86" height="30"/>
+                                                <color key="backgroundColor" name="background-color"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="swap" title="Sırala">
+                                                    <color key="baseForegroundColor" name="title-color"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.ClipsToBounds" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="sortButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x4F-k9-svc"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" name="background-color"/>
                                         <constraints>
+                                            <constraint firstItem="XPR-cO-5bI" firstAttribute="top" secondItem="ay8-Tz-5Qc" secondAttribute="bottom" constant="25" id="044-I4-yFO"/>
                                             <constraint firstItem="ay8-Tz-5Qc" firstAttribute="leading" secondItem="x2f-GX-Jfp" secondAttribute="leading" constant="20" id="4oy-gF-8dD"/>
                                             <constraint firstAttribute="trailing" secondItem="f2f-NX-CiS" secondAttribute="trailing" id="8Dk-63-MMj"/>
                                             <constraint firstItem="ufi-JK-Xbp" firstAttribute="top" secondItem="x2f-GX-Jfp" secondAttribute="top" constant="10" id="9Nc-lF-vmo"/>
@@ -214,14 +251,15 @@
                                             <constraint firstAttribute="trailing" secondItem="WT6-gH-edm" secondAttribute="trailing" constant="309" id="Dyp-zi-rKK"/>
                                             <constraint firstAttribute="trailing" secondItem="ufi-JK-Xbp" secondAttribute="trailing" constant="20" id="Ggw-Ci-yQ4"/>
                                             <constraint firstItem="WT6-gH-edm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x2f-GX-Jfp" secondAttribute="leading" constant="20" symbolic="YES" id="IHF-ay-Nm7"/>
-                                            <constraint firstItem="DbY-gc-crg" firstAttribute="top" secondItem="ay8-Tz-5Qc" secondAttribute="bottom" constant="20" id="RLx-lh-wU3"/>
+                                            <constraint firstItem="DbY-gc-crg" firstAttribute="top" secondItem="ay8-Tz-5Qc" secondAttribute="bottom" constant="30" id="RLx-lh-wU3"/>
                                             <constraint firstItem="ay8-Tz-5Qc" firstAttribute="top" secondItem="WT6-gH-edm" secondAttribute="bottom" constant="10" id="RuL-q2-WTb"/>
                                             <constraint firstItem="f2f-NX-CiS" firstAttribute="leading" secondItem="x2f-GX-Jfp" secondAttribute="leading" id="Tid-Ac-bGk"/>
                                             <constraint firstItem="WT6-gH-edm" firstAttribute="top" secondItem="ufi-JK-Xbp" secondAttribute="bottom" constant="20" id="UGs-QZ-yYt"/>
                                             <constraint firstAttribute="bottom" secondItem="f2f-NX-CiS" secondAttribute="bottom" id="ZzQ-Ib-Cn4"/>
                                             <constraint firstAttribute="trailing" secondItem="DbY-gc-crg" secondAttribute="trailing" constant="279.33333333333331" id="dgC-BO-2mZ"/>
+                                            <constraint firstItem="DbY-gc-crg" firstAttribute="leading" secondItem="x2f-GX-Jfp" secondAttribute="leading" constant="20" id="hGR-Ye-oHc"/>
+                                            <constraint firstAttribute="trailing" secondItem="XPR-cO-5bI" secondAttribute="trailing" constant="15" id="kS7-OD-Yn1"/>
                                             <constraint firstItem="ufi-JK-Xbp" firstAttribute="leading" secondItem="x2f-GX-Jfp" secondAttribute="leading" constant="20" id="pah-wW-U3v"/>
-                                            <constraint firstItem="DbY-gc-crg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x2f-GX-Jfp" secondAttribute="leading" constant="20" symbolic="YES" id="u25-X8-ITV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -256,7 +294,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="accessoryButton" destination="vAN-17-U3t" id="S2C-Tn-XVd"/>
+                        <outlet property="allButton" destination="4Ye-RU-nJf" id="OX0-y6-8Yh"/>
+                        <outlet property="categoryNameLabel" destination="DbY-gc-crg" id="UTQ-gp-iG8"/>
                         <outlet property="collectionViewProduct" destination="f2f-NX-CiS" id="fVi-P0-mbQ"/>
+                        <outlet property="cosmeticButton" destination="ShX-lY-LLg" id="9iK-ba-JgF"/>
+                        <outlet property="sortButton" destination="XPR-cO-5bI" id="zMs-xS-bGf"/>
+                        <outlet property="technologyButton" destination="Tkp-pZ-KFY" id="POJ-UB-OQo"/>
                         <segue destination="v1o-Zj-Ybk" kind="show" identifier="toDetail" id="LNn-WT-36r"/>
                     </connections>
                 </viewController>
@@ -831,6 +875,7 @@
         <image name="phone" width="256" height="256"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="star.fill.left" catalog="system" width="128" height="116"/>
+        <image name="swap" width="20" height="20"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <namedColor name="background-color">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
