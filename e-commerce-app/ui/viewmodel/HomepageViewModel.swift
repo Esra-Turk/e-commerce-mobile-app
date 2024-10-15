@@ -33,4 +33,13 @@ class HomepageViewModel {
             productsList.onNext(filteredProducts)
         }
     }
+    
+    func searchProduct(productName: String) {
+        if productName.isEmpty {
+            productsList.onNext(allProducts)
+        } else {
+            let filteredProducts = allProducts.filter { $0.ad!.lowercased().contains(productName.lowercased()) }
+            productsList.onNext(filteredProducts)
+        }
+    }
 }

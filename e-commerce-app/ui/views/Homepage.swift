@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Homepage: UIViewController {
+class Homepage: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var collectionViewProduct: UICollectionView!
     @IBOutlet weak var allButton: UIButton!
@@ -20,6 +20,7 @@ class Homepage: UIViewController {
     var viewModel = HomepageViewModel()
     var productList = [Urunler]()
     var reviewCounts: [Int] = []
+    var searchTextField: UITextField!
 
 
     override func viewDidLoad() {
@@ -50,6 +51,10 @@ class Homepage: UIViewController {
     }
     
     
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        showSearchField()
+    }
+    
     @IBAction func sortButtonTapped(_ sender: UIButton) {
         showSortActionSheet(on: self)
     }
@@ -74,6 +79,37 @@ class Homepage: UIViewController {
         default:
             break
         }
+    }
+    
+    @objc func showSearchField() {
+        if searchTextField == nil {
+            searchTextField = UITextField(frame: CGRect(x: 0, y: 0, width: 250, height: 30))
+            searchTextField.placeholder = "Ürünlerde Ara"
+            searchTextField.borderStyle = .roundedRect
+            searchTextField.delegate = self
+        }
+
+        navigationItem.titleView = searchTextField
+        searchTextField.becomeFirstResponder()
+    }
+    
+    // Klavyeden her bir karakter girişini dinler
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+        filterContentForSearchText(currentText)
+        return true
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.resignFirstResponder()
+        navigationItem.titleView = nil
+        return true
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        viewModel.searchProduct(productName: searchText)
+
     }
     
     private func selectButton(_ button: UIButton) {
