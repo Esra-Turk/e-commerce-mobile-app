@@ -30,6 +30,7 @@
 		0F094EAD2CB56F3F00DF963A /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094EAC2CB56F3F00DF963A /* Endpoints.swift */; };
 		0F094EB02CB5782400DF963A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0F094EAF2CB5782400DF963A /* RxSwift */; };
 		0F094EB32CB578B900DF963A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0F094EB22CB578B900DF963A /* Kingfisher */; };
+		0F2DDF592CBE92FA000A10F3 /* DiscountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2DDF582CBE92FA000A10F3 /* DiscountManager.swift */; };
 		0FB685C12CB684C700620396 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB685C02CB684C700620396 /* ImageHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		0F094EA72CB5645800DF963A /* CartProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProductCell.swift; sourceTree = "<group>"; };
 		0F094EA92CB5648400DF963A /* HomeProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductCell.swift; sourceTree = "<group>"; };
 		0F094EAC2CB56F3F00DF963A /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		0F2DDF582CBE92FA000A10F3 /* DiscountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountManager.swift; sourceTree = "<group>"; };
 		0FB685C02CB684C700620396 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +189,7 @@
 			children = (
 				0F094EAC2CB56F3F00DF963A /* Endpoints.swift */,
 				0FB685C02CB684C700620396 /* ImageHelper.swift */,
+				0F2DDF582CBE92FA000A10F3 /* DiscountManager.swift */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F2DDF592CBE92FA000A10F3 /* DiscountManager.swift in Sources */,
 				0F094EAA2CB5648400DF963A /* HomeProductCell.swift in Sources */,
 				0F094E862CB54F5B00DF963A /* UrunlerResult.swift in Sources */,
 				0F094E8A2CB5535F00DF963A /* UrunlerSepeti.swift in Sources */,

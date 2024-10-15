@@ -34,10 +34,32 @@ class Cart: UIViewController {
             self.cartItemList = list
             DispatchQueue.main.async{
                 self.productsTableView.reloadData()
+                self.calculateTotalPrice()
             }
         })
     }
-
+    
+    func calculateTotalPrice(){
+        var productCount = 0
+        var totalAmount = 0
+        var totalDiscount = 0
+        
+        for product in cartItemList {
+            let quantity = product.siparisAdeti!
+            let price = product.fiyat!
+            
+            productCount += quantity
+            totalAmount += quantity * price
+            
+        }
+        
+        totalDiscount = DiscountManager.shared.discountAmount
+        
+        numberOfProduct.text = String(productCount)
+        amountLabel.text = "\(totalAmount) ₺"
+        discountLabel.text = "\(totalDiscount) ₺"
+        totalAmountLabel.text = "\(totalAmount - totalDiscount) ₺"
+    }
 }
 
 extension Cart:UITableViewDelegate,UITableViewDataSource {
