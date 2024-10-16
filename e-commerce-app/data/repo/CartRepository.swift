@@ -10,8 +10,7 @@ import RxSwift
 
 class CartRepository {
     var cartItemList = BehaviorSubject<[UrunlerSepeti]>(value: [UrunlerSepeti]())
-    var cartDictionary: [Int:String] = [:]
-    
+   
     func addToCart(name:String, photo:String, category:String, price:Int, brand:String, orderQuantity:Int){
         let addToCartURL = API.Endpoints.addToCart
         let username = API.User.userName

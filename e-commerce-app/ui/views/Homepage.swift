@@ -227,6 +227,7 @@ extension Homepage: UICollectionViewDelegateFlowLayout, UICollectionViewDataSour
         cell.productReviewsLabel.text = "\(reviewCounts[indexPath.row]) Değerlendirme"
         cell.layer.cornerRadius = 20
         cell.layer.masksToBounds = true
+        cell.configure(with: product, viewModel: viewModel)
         
         return cell
     }

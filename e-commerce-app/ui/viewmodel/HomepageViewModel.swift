@@ -10,9 +10,11 @@ import RxSwift
 
 class HomepageViewModel {
     var pRepo = ProductRepository()
+    var fRepo = FavoriteRepository()
     var productsList = BehaviorSubject<[Urunler]>(value: [Urunler]())
     private var allProducts = [Urunler]()
     private let disposeBag = DisposeBag()
+    
     
     init() {
         pRepo.productsList.subscribe(onNext: { products in
@@ -42,4 +44,24 @@ class HomepageViewModel {
             productsList.onNext(filteredProducts)
         }
     }
+    
+    func toggleFavorite(product: Urunler) {
+        let productName = product.ad
+        let brandName = product.marka
+
+        if isFavorite(product: product) {
+            fRepo.removeFavorite(by: productName!, brandName: brandName!)
+        } else {
+            fRepo.addFavorite(productName: productName!, brandName: brandName!, price: product.fiyat!, imageUrl: product.resim!)
+        }
+    }
+    
+    func isFavorite(product: Urunler) -> Bool {
+        let productName = product.ad
+        let brandName = product.marka
+
+        return fRepo.isFavorite(productName: productName!, brandName: brandName!)
+    }
+    
+
 }

@@ -32,13 +32,6 @@ class CartProductCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-    @IBAction func increaseQuantityButton(_ sender: UIButton) {
-    }
-    
-    @IBAction func decreaseQuantityButton(_ sender: UIButton) {
-    }
-    
     var onRemoveButtonTapped: (() -> Void)?
     
     @IBAction func removeProductButton(_ sender: Any) {
