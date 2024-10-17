@@ -11,17 +11,34 @@ class Register: UIViewController, UITextFieldDelegate{
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var verificationPasswordField: UITextField!
+    
+    private var viewModel = RegisterViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        verificationPasswordField.delegate = self
         
-
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
+        guard passwordTextField.text == verificationPasswordField.text else {
+            print("Şifreler eşleşmiyor")
+            return
+        }
+        
+        viewModel.register(email: emailTextField.text!, password: passwordTextField.text!) { result in
+            switch result {
+            case .success(_):
+                print("Kayıt başarılı")
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+        
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

@@ -12,6 +12,8 @@ class Login: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    private var viewModel = LoginViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +23,14 @@ class Login: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
+        viewModel.login(email: emailTextField.text!, password: passwordTextField.text!) { result in
+            switch result {
+            case .success(_):
+                print("Giriş başarılı")
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
