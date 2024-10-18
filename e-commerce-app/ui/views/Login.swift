@@ -11,6 +11,7 @@ class Login: UIViewController, UITextFieldDelegate{
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     private var viewModel = LoginViewModel()
     
@@ -19,19 +20,41 @@ class Login: UIViewController, UITextFieldDelegate{
 
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        loginButton.tintColor = UIColor(named: "button-orange")
         
     }
     
+    
     @IBAction func loginButtonTapped(_ sender: Any) {
-        viewModel.login(email: emailTextField.text!, password: passwordTextField.text!) { result in
-            switch result {
-            case .success(_):
-                print("Giriş başarılı")
-            case .failure(let failure):
-                print(failure.localizedDescription)
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            self.showAlert(title: "Hata", message: "Email ve şifre giriniz.")
+            return
+        }
+        
+        viewModel.login(email: email, password: password) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    self.navigateToHomePage()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self.showAlert(title: "Başarısız", message: "E-posta veya şifre yanlış")
+                }
             }
         }
     }
+    
+    private func navigateToHomePage() {
+        if let navigationController = self.navigationController {
+            navigationController.popToRootViewController(animated: false)
+        }
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let tabBarController = windowScene.windows.first?.rootViewController as? UITabBarController {
+            tabBarController.selectedIndex = 0  // Anasayfaya git
+        }
+    }
+    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.backgroundColor = UIColor.white
@@ -43,6 +66,13 @@ class Login: UIViewController, UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.backgroundColor = UIColor(named: "background-color")
         textField.layer.borderWidth = 0
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
 }

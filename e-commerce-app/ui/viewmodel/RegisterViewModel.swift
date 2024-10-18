@@ -6,20 +6,23 @@
 //
 
 import Foundation
-import Firebase
 import FirebaseAuth
 
 class RegisterViewModel {
-    private let auth = Auth.auth()
+    private let registerRepo = RegisterRepository()
     
     func register(email:String, password:String, completion: @escaping (Result<User,Error>) -> Void){
-        auth.createUser(withEmail: email, password: password) { result, error in
-            if let error = error {
-                completion(.failure(error))
-            } else if let user = result?.user {
-                completion(.success(user))
-            }
+        registerRepo.register(email: email, password: password) { result in
+            completion(result)
         }
         
     }
+    
+    func saveUserDetails(userId: String, fullName: String, email: String, completion: @escaping (Error?) -> Void) {
+           registerRepo.saveUserDetails(userId: userId, fullName: fullName, email: email) { error in
+               completion(error) // Sonucu ViewController'a iletir
+           }
+       }
+    
+    
 }

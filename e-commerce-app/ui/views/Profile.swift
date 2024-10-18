@@ -10,18 +10,74 @@ import UIKit
 class Profile: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var registerbutton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
     
-    let data = ["Siparişlerim", "Kuponlarım","Beğendiklerim", "Premiumlu Ol", "Müşteri Hizmetleri","Ayarlar"]
+    let data = ["Siparişlerim", "Kuponlarım","Beğendiklerim", "Premiumlu Ol", "Müşteri Hizmetleri","Ayarlar","Çıkış Yap"]
+    private var viewModel = ProfileViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarItem.title = ""
         
         tableView.delegate = self
         tableView.dataSource = self
+        setupNavigationController()
+        
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchAndUpdateUI()
+    }
     
+    private func fetchAndUpdateUI() {
+         viewModel.fetchUserData { [weak self] in
+             DispatchQueue.main.async {
+                 self?.updateUIBasedOnUserStatus()
+             }
+         }
+     }
+    
+    private func updateUIBasedOnUserStatus() {
+        if let profile = viewModel.user {
+             // Kullanıcı giriş yapmışsa butonları gizle kullanıcı adını ve profil resmini göster
+             registerbutton.isHidden = true
+             loginButton.isHidden = true
+             userNameLabel.isHidden = false
+             profileImage.isHidden = false
+             userNameLabel.text = profile.fullName ?? "Kullanıcı"
+             self.navigationItem.title = "Profilim"
+         } else {
+             registerbutton.isHidden = false
+             loginButton.isHidden = false
+             userNameLabel.isHidden = true
+             profileImage.isHidden = true
+             self.navigationItem.title = "Misafir Kullanıcı"
+         }
+     }
+    
+    func signOutUser() {
+        viewModel.signOutUser { [weak self] error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Çıkış yapılırken hata oluştu: \(error.localizedDescription)")
+                } else {
+                    print("Kullanıcı başarıyla çıkış yaptı.")
+                    self?.fetchAndUpdateUI() // Çıkıştan sonra UI'yi güncelle
+                }
+            }
+        }
+    }
+    
+    private func setupNavigationController() {
+         let backButton = UIBarButtonItem()
+         backButton.title = "Geri"
+         backButton.tintColor = UIColor(named: "button-orange")
+         navigationItem.backBarButtonItem = backButton
+     }
 }
 
 extension Profile:UITableViewDelegate,UITableViewDataSource {
@@ -49,12 +105,24 @@ extension Profile:UITableViewDelegate,UITableViewDataSource {
                 cell.button.setImage(UIImage(systemName: "gearshape"), for: .normal)
             case 5:
                 cell.button.setImage(UIImage(systemName: "person.wave.2"), for: .normal)
+            case 6:
+                cell.button.setImage(UIImage(systemName: "questionmark.circle"), for: .normal)
             default:
                 cell.button.setImage(UIImage(systemName: "questionmark.circle"), for: .normal)
+            
         }
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+          switch indexPath.row {
+          case 6:
+              signOutUser()
+          default:
+              print("\(data[indexPath.row]) hücresi seçildi")
+          }
+      }
     
     
 }
