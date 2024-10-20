@@ -44,6 +44,7 @@ class ProductDetail: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         observeCartItems()
+        quantity = 1
     }
     
     @IBAction func decreaseQuantityLabel(_ sender: UIButton) {
@@ -80,6 +81,7 @@ class ProductDetail: UIViewController {
                             price: product.fiyat!,
                             brand: product.marka!,
                             orderQuantity: quantity)
+        AnimationHelper.shared.setupAnimation(on: self.view, animationName: "addtocart-animation")
         
     }
     

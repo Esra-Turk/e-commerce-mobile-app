@@ -866,6 +866,9 @@
                                         <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="completeOrderButton:" destination="Nbr-Ho-pvL" eventType="touchUpInside" id="O2H-9C-icX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2ga-aa-lhf"/>

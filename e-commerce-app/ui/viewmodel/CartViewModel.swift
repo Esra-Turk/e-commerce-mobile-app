@@ -24,4 +24,13 @@ class CartViewModel {
         cRepo.removeCartItem(cartID: cartID)
     }
     
+    func clearCart() {
+        guard let cartItems = try? cartItemList.value() else { return }
+        for product in cartItems {
+            if let cartID = product.sepetId {
+                remevoCartItem(cartID: cartID)
+            }
+        }
+    }
+    
 }

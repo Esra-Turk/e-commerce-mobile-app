@@ -39,6 +39,11 @@ class Cart: UIViewController {
         })
     }
     
+    @IBAction func completeOrderButton(_ sender: Any) {
+        AnimationHelper.shared.setupAnimation(on: self.view, animationName: "complete-animation")
+        viewModel.clearCart()
+    }
+    
     func calculateTotalPrice(){
         var productCount = 0
         var totalAmount = 0
@@ -64,6 +69,12 @@ class Cart: UIViewController {
 
 extension Cart:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if cartItemList.isEmpty {
+            TableViewHelper.showEmptyCartMessage(on: productsTableView, with: "Sepetiniz Boş")
+        } else {
+            tableView.backgroundView = nil
+        }
+        
         return cartItemList.count
     }
     
