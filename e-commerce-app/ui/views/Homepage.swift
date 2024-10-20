@@ -16,11 +16,15 @@ class Homepage: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cosmeticButton: UIButton!
     @IBOutlet weak var sortButton: UIButton!
     @IBOutlet weak var categoryNameLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var viewModel = HomepageViewModel()
     var productList = [Urunler]()
     var reviewCounts: [Int] = []
     var searchTextField: UITextField!
+    var images = ["banner1", "banner2","banner3"]
+    var timer: Timer?
+    var currentIndex = 0
 
 
     override func viewDidLoad() {
@@ -31,6 +35,8 @@ class Homepage: UIViewController, UITextFieldDelegate {
         
         selectButton(allButton)
         setButtonStyle(button: sortButton)
+        setupImagesInScrollView()
+        startTimer()
         
         reviewCounts = (0..<12).map { _ in Int.random(in: 50...200) }
         
@@ -209,6 +215,41 @@ class Homepage: UIViewController, UITextFieldDelegate {
         navigationItem.backBarButtonItem = backButton
 
     }
+    
+    private func setupImagesInScrollView() {
+          scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(images.count), height: view.frame.height)
+          
+          for i in 0..<images.count {
+              let imageView = UIImageView()
+              imageView.image = UIImage(named: images[i])
+              imageView.contentMode = .scaleAspectFill
+              imageView.clipsToBounds = true
+              
+              let xPosition = view.frame.width * CGFloat(i)
+              imageView.frame = CGRect(x: xPosition, y: 0, width: view.frame.width, height: 150)
+              
+              scrollView.addSubview(imageView)
+          }
+      }
+
+      private func startTimer() {
+          timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(autoScrollImages), userInfo: nil, repeats: true)
+      }
+      
+      // Zamanlayıcı tetiklendiğinde çalışacak fonksiyon
+      @objc func autoScrollImages() {
+          currentIndex += 1
+          if currentIndex >= images.count {
+              currentIndex = 0
+          }
+          
+          let xOffset = CGFloat(currentIndex) * scrollView.frame.width
+          scrollView.setContentOffset(CGPoint(x: xOffset, y: 0), animated: true)
+      }
+      
+      deinit {
+          timer?.invalidate()
+      }
     
 }
 
