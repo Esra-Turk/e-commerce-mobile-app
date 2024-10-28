@@ -16,7 +16,7 @@ class Cart: UIViewController {
     @IBOutlet weak var productsTableView: UITableView!
     
     var viewModel = CartViewModel()
-    var cartItemList = [UrunlerSepeti]()
+    var cartItemList = [CartItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -19,7 +19,7 @@ class Homepage: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var viewModel = HomepageViewModel()
-    var productList = [Urunler]()
+    var productList = [Product]()
     var reviewCounts: [Int] = []
     var searchTextField: UITextField!
     var images = ["banner1", "banner2","banner3"]
@@ -184,7 +184,7 @@ class Homepage: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetail" {
-            if let product = sender as? Urunler {
+            if let product = sender as? Product {
                 let destinationVC = segue.destination as! ProductDetail
                 destinationVC.product = product
                 

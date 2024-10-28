@@ -14,10 +14,10 @@
 		0F094E772CB54A9400DF963A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F094E762CB54A9400DF963A /* Assets.xcassets */; };
 		0F094E7A2CB54A9400DF963A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0F094E792CB54A9400DF963A /* Base */; };
 		0F094E842CB54F4900DF963A /* CRUDResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094E832CB54F4900DF963A /* CRUDResult.swift */; };
-		0F094E862CB54F5B00DF963A /* UrunlerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094E852CB54F5B00DF963A /* UrunlerResult.swift */; };
-		0F094E882CB54F6500DF963A /* Urunler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094E872CB54F6500DF963A /* Urunler.swift */; };
-		0F094E8A2CB5535F00DF963A /* UrunlerSepeti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094E892CB5535F00DF963A /* UrunlerSepeti.swift */; };
-		0F094E8C2CB554BF00DF963A /* SepetResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094E8B2CB554BF00DF963A /* SepetResult.swift */; };
+		0F094E862CB54F5B00DF963A /* ProductsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094E852CB54F5B00DF963A /* ProductsResult.swift */; };
+		0F094E882CB54F6500DF963A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094E872CB54F6500DF963A /* Product.swift */; };
+		0F094E8A2CB5535F00DF963A /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094E892CB5535F00DF963A /* CartItem.swift */; };
+		0F094E8C2CB554BF00DF963A /* CartResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094E8B2CB554BF00DF963A /* CartResult.swift */; };
 		0F094E8F2CB558A700DF963A /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094E8E2CB558A700DF963A /* ProductRepository.swift */; };
 		0F094E912CB558F900DF963A /* CartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094E902CB558F900DF963A /* CartRepository.swift */; };
 		0F094E962CB559A700DF963A /* HomepageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F094E952CB559A700DF963A /* HomepageViewModel.swift */; };
@@ -69,10 +69,10 @@
 		0F094E792CB54A9400DF963A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F094E7B2CB54A9400DF963A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F094E832CB54F4900DF963A /* CRUDResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUDResult.swift; sourceTree = "<group>"; };
-		0F094E852CB54F5B00DF963A /* UrunlerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrunlerResult.swift; sourceTree = "<group>"; };
-		0F094E872CB54F6500DF963A /* Urunler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urunler.swift; sourceTree = "<group>"; };
-		0F094E892CB5535F00DF963A /* UrunlerSepeti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrunlerSepeti.swift; sourceTree = "<group>"; };
-		0F094E8B2CB554BF00DF963A /* SepetResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SepetResult.swift; sourceTree = "<group>"; };
+		0F094E852CB54F5B00DF963A /* ProductsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsResult.swift; sourceTree = "<group>"; };
+		0F094E872CB54F6500DF963A /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		0F094E892CB5535F00DF963A /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
+		0F094E8B2CB554BF00DF963A /* CartResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartResult.swift; sourceTree = "<group>"; };
 		0F094E8E2CB558A700DF963A /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
 		0F094E902CB558F900DF963A /* CartRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRepository.swift; sourceTree = "<group>"; };
 		0F094E952CB559A700DF963A /* HomepageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewModel.swift; sourceTree = "<group>"; };
@@ -172,10 +172,10 @@
 			isa = PBXGroup;
 			children = (
 				0F094E832CB54F4900DF963A /* CRUDResult.swift */,
-				0F094E852CB54F5B00DF963A /* UrunlerResult.swift */,
-				0F094E872CB54F6500DF963A /* Urunler.swift */,
-				0F094E892CB5535F00DF963A /* UrunlerSepeti.swift */,
-				0F094E8B2CB554BF00DF963A /* SepetResult.swift */,
+				0F094E852CB54F5B00DF963A /* ProductsResult.swift */,
+				0F094E872CB54F6500DF963A /* Product.swift */,
+				0F094E892CB5535F00DF963A /* CartItem.swift */,
+				0F094E8B2CB554BF00DF963A /* CartResult.swift */,
 				0FA385C32CC2676D0094320E /* UserProfile.swift */,
 			);
 			path = entity;
@@ -392,8 +392,8 @@
 				0F297BCC2CC51F8B00A6F25F /* AnimationHelper.swift in Sources */,
 				0F7F291C2CC1062200715F76 /* Login.swift in Sources */,
 				0F094EAA2CB5648400DF963A /* HomeProductCell.swift in Sources */,
-				0F094E862CB54F5B00DF963A /* UrunlerResult.swift in Sources */,
-				0F094E8A2CB5535F00DF963A /* UrunlerSepeti.swift in Sources */,
+				0F094E862CB54F5B00DF963A /* ProductsResult.swift in Sources */,
+				0F094E8A2CB5535F00DF963A /* CartItem.swift in Sources */,
 				0FA8BB8B2CBFC3E800318177 /* FavoritesViewModel.swift in Sources */,
 				0F297BD42CC5269E00A6F25F /* TableViewHelper.swift in Sources */,
 				0F7F29232CC1393600715F76 /* LoginViewModel.swift in Sources */,
@@ -405,11 +405,11 @@
 				0F094E912CB558F900DF963A /* CartRepository.swift in Sources */,
 				0FA8BB872CBFBA1F00318177 /* Favorites.swift in Sources */,
 				0FB685C12CB684C700620396 /* ImageHelper.swift in Sources */,
-				0F094E882CB54F6500DF963A /* Urunler.swift in Sources */,
+				0F094E882CB54F6500DF963A /* Product.swift in Sources */,
 				0F094EA02CB5630A00DF963A /* Cart.swift in Sources */,
 				0F7F29252CC13D8000715F76 /* RegisterViewModel.swift in Sources */,
 				0F094E842CB54F4900DF963A /* CRUDResult.swift in Sources */,
-				0F094E8C2CB554BF00DF963A /* SepetResult.swift in Sources */,
+				0F094E8C2CB554BF00DF963A /* CartResult.swift in Sources */,
 				0F7F291A2CC1061600715F76 /* Register.swift in Sources */,
 				0F094E722CB54A9200DF963A /* Homepage.swift in Sources */,
 				0FA385CC2CC270FB0094320E /* RegisterRepository.swift in Sources */,

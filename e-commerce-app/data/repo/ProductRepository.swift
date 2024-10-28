@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 class ProductRepository {
-    var productsList = BehaviorSubject<[Urunler]>(value: [Urunler]())
+    var productsList = BehaviorSubject<[Product]>(value: [Product]())
     
     func getProducts() {
         let productsURL = API.Endpoints.fetchProducts
@@ -17,7 +17,7 @@ class ProductRepository {
         
         URLSession.shared.dataTask(with: url) { data,response,error in
             do {
-                let response = try JSONDecoder().decode(UrunlerResult.self, from: data!)
+                let response = try JSONDecoder().decode(ProductsResult.self, from: data!)
                 if let list = response.urunler {
                     self.productsList.onNext(list)
                 }

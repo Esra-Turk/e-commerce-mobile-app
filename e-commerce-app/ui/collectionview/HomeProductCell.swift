@@ -15,7 +15,7 @@ class HomeProductCell: UICollectionViewCell {
     @IBOutlet weak var productReviewsLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    var product: Urunler?
+    var product: Product?
     var viewModel: HomepageViewModel?
     
     override func awakeFromNib() {
@@ -30,7 +30,7 @@ class HomeProductCell: UICollectionViewCell {
     }
     
     // Hücreyi yapılandırırken çağrılacak fonksiyon
-    func configure(with product: Urunler, viewModel: HomepageViewModel) {
+    func configure(with product: Product, viewModel: HomepageViewModel) {
         self.product = product
         self.viewModel = viewModel
         updateFavoriteButton()

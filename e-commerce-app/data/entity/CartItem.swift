@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UrunlerSepeti : Codable {
+class CartItem : Codable {
     var sepetId:Int?
     var ad:String?
     var resim:String?

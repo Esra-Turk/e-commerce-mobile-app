@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 class ProductDetailViewModel {
-    var cartItemList = BehaviorSubject<[UrunlerSepeti]>(value: [UrunlerSepeti]())
+    var cartItemList = BehaviorSubject<[CartItem]>(value: [CartItem]())
     var cRepo = CartRepository()
     var disposeBag = DisposeBag()
 

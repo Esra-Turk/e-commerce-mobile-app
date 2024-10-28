@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Urunler: Codable {
+class Product: Codable {
     var id:Int?
     var ad:String?
     var resim:String?

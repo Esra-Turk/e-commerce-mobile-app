@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 class CartRepository {
-    var cartItemList = BehaviorSubject<[UrunlerSepeti]>(value: [UrunlerSepeti]())
+    var cartItemList = BehaviorSubject<[CartItem]>(value: [CartItem]())
    
     func addToCart(name:String, photo:String, category:String, price:Int, brand:String, orderQuantity:Int){
         let addToCartURL = API.Endpoints.addToCart
@@ -44,7 +44,7 @@ class CartRepository {
         
         URLSession.shared.dataTask(with: request) { data,response,error in
             do {
-                let res = try JSONDecoder().decode(SepetResult.self, from: data!)
+                let res = try JSONDecoder().decode(CartResult.self, from: data!)
                 if let list = res.urunler_sepeti {
                     self.cartItemList.onNext(list)
                 }

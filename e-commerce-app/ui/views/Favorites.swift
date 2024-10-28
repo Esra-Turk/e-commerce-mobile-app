@@ -12,7 +12,7 @@ class Favorites: UIViewController {
     var favoriteProductsList = [FavoriteProduct]()
     var viewModel = FavoritesViewModel()
     let disposeBag = DisposeBag()
-    var cartItemList = [UrunlerSepeti]()
+    var cartItemList = [CartItem]()
 
     @IBOutlet weak var favoritesTableView: UITableView!
     

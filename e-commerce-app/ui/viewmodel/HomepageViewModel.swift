@@ -11,8 +11,8 @@ import RxSwift
 class HomepageViewModel {
     var pRepo = ProductRepository()
     var fRepo = FavoriteRepository()
-    var productsList = BehaviorSubject<[Urunler]>(value: [Urunler]())
-    private var allProducts = [Urunler]()
+    var productsList = BehaviorSubject<[Product]>(value: [Product]())
+    private var allProducts = [Product]()
     private let disposeBag = DisposeBag()
     
     
@@ -45,7 +45,7 @@ class HomepageViewModel {
         }
     }
     
-    func toggleFavorite(product: Urunler) {
+    func toggleFavorite(product: Product) {
         let productName = product.ad
         let brandName = product.marka
 
@@ -56,7 +56,7 @@ class HomepageViewModel {
         }
     }
     
-    func isFavorite(product: Urunler) -> Bool {
+    func isFavorite(product: Product) -> Bool {
         let productName = product.ad
         let brandName = product.marka
 

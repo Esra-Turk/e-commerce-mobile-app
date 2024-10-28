@@ -17,9 +17,9 @@ class ProductDetail: UIViewController {
     @IBOutlet weak var reviewsLabel: UILabel!
     @IBOutlet weak var productQuantityLabel: UILabel!
     
-    var product: Urunler?
+    var product: Product?
     var viewModel = ProductDetailViewModel()
-    var cartItemList = [UrunlerSepeti]()
+    var cartItemList = [CartItem]()
     var reviewCount: Int?
     
     var quantity = 1 {
